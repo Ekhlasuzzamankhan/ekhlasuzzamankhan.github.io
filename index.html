@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ekhlasuzzaman Khan</title>
+  <meta name="description" content="Personal portfolio of Ekhlasuzzaman Khan — EEE student at North South University."/>
+  <link rel="stylesheet" href="css/style.css"/>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="index.html">
+    <img src="ek-logo.gif" alt="EK" style="height:34px;width:auto;vertical-align:middle;filter:brightness(0) saturate(100%) invert(42%) sepia(80%) saturate(600%) hue-rotate(350deg) brightness(95%);">
+  </a>
+  <div class="nav-links" id="navLinks">
+    <a href="index.html">Home</a>
+    <a href="pages/about.html">About</a>
+    <a href="pages/education.html">Education</a>
+    <a href="pages/skills.html">Skills</a>
+    <a href="pages/projects.html">Projects</a>
+    <a href="pages/contact.html">Contact</a>
+  </div>
+  <div class="hamburger" id="hamburger">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<div class="page">
+  <section class="hero">
+    <div class="fade-up" style="margin-bottom:1.25rem;">
+      <img src="ek-logo.gif" alt="EK Logo" style="height:80px;width:auto;filter:brightness(0) saturate(100%) invert(42%) sepia(80%) saturate(600%) hue-rotate(350deg) brightness(95%);opacity:0.9;">
+    </div>
+    <p class="hero-eyebrow fade-up">Portfolio</p>
+    <h1 class="fade-up">
+      Hi, I'm<br>
+      <em id="typed-name"></em><span class="typing-cursor" id="cursor">|</span>
+    </h1>
+    <p class="hero-sub fade-up">
+      Electrical &amp; Electronics Engineering student at <strong style="color:var(--text)">North South University</strong>, exploring the intersection of circuits, code, and creativity.
+    </p>
+    <div class="hero-actions fade-up">
+      <a href="pages/projects.html" class="btn-primary">View my work</a>
+      <a href="pages/contact.html" class="btn-outline">Get in touch</a>
+    </div>
+  </section>
+
+  <div class="quick-links">
+    <a href="pages/about.html" class="quick-card">
+      <div class="quick-card-icon">👤</div>
+      <div class="quick-card-title">About me</div>
+      <div class="quick-card-sub">Who I am &amp; what drives me</div>
+    </a>
+    <a href="pages/education.html" class="quick-card">
+      <div class="quick-card-icon">🎓</div>
+      <div class="quick-card-title">Education</div>
+      <div class="quick-card-sub">North South University, EEE</div>
+    </a>
+    <a href="pages/skills.html" class="quick-card">
+      <div class="quick-card-icon">⚡</div>
+      <div class="quick-card-title">Skills</div>
+      <div class="quick-card-sub">Tools &amp; technologies I use</div>
+    </a>
+    <a href="pages/projects.html" class="quick-card">
+      <div class="quick-card-icon">🔧</div>
+      <div class="quick-card-title">Projects</div>
+      <div class="quick-card-sub">Things I've built</div>
+    </a>
+  </div>
+</div>
+
+<footer>
+  <span>&copy; 2026 Ekhlasuzzaman Khan</span>
+  <span>Banasree, Dhaka, Bangladesh</span>
+</footer>
+
+<script src="js/nav.js"></script>
+<script>
+  const name = "Ekhlasuzzaman Khan";
+  const el = document.getElementById('typed-name');
+  const cursor = document.getElementById('cursor');
+  let i = 0;
+  function type() {
+    if (i <= name.length) {
+      el.textContent = name.slice(0, i++);
+      setTimeout(type, i === 1 ? 600 : 60);
+    } else {
+      cursor.style.display = 'none';
+    }
+  }
+  setTimeout(type, 900);
+</script>
+</body>
+</html>
