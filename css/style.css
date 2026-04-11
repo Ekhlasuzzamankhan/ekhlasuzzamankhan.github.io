@@ -265,3 +265,7 @@ footer {
   .quick-links { padding: 0 1.5rem 4rem; }
   footer { flex-direction:column; gap:0.5rem; text-align:center; padding:1.5rem; }
 }
+
+.edu-card.orange::before { background: var(--accent); }
+.edu-card.green::before  { background: var(--accent3); }
+
