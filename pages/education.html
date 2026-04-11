@@ -5,6 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Education — Ekhlasuzzaman Khan</title>
   <link rel="stylesheet" href="../css/style.css"/>
+<style>
+  .edu-card:nth-child(2)::before { background: var(--accent); }
+  .edu-card:nth-child(3)::before { background: var(--accent3); }
+</style>
 </head>
 <body>
 
@@ -30,17 +34,35 @@
 
     <div class="fade-up" style="display:flex;flex-direction:column;gap:1.5rem;">
 
+      <!-- University -->
       <div class="edu-card">
-        <p class="edu-year">2023 — Present</p>
+        <p class="edu-year">2025 — Present</p>
         <h3 class="edu-uni">North South University</h3>
         <p class="edu-degree">Bachelor of Science in Engineering<br>Electrical &amp; Electronics Engineering (EEE)</p>
         <p style="font-size:13px;color:var(--text-muted);margin-bottom:1.25rem;">Dhaka, Bangladesh</p>
         <span class="edu-badge">2nd Year &middot; 1st Semester &middot; Ongoing</span>
       </div>
 
-      <!-- Placeholder for future education entries -->
-      <div style="border:0.5px dashed var(--border);border-radius:var(--radius-lg);padding:2rem;text-align:center;">
-        <p style="font-size:13px;color:var(--text-dim);">More entries can be added here as your academic journey continues.</p>
+      <!-- College -->
+      <div class="edu-card" style="border-color:rgba(224,92,42,0.25);" onmouseover="this.style.borderColor='var(--accent)'" onmouseout="this.style.borderColor='rgba(224,92,42,0.25)'">
+        <p class="edu-year" style="color:var(--accent);">2022 — 2024</p>
+        <h3 class="edu-uni">Dhaka City College</h3>
+        <p class="edu-degree">Higher Secondary Certificate (HSC)</p>
+        <p style="font-size:13px;color:var(--text-muted);margin-bottom:1.25rem;">Dhaka, Bangladesh</p>
+        <span class="edu-badge" style="background:var(--accent-dim);border-color:rgba(224,92,42,0.2);color:var(--accent);">Passed HSC &middot; 2024</span>
+      </div>
+
+      <!-- School -->
+      <div class="edu-card" style="border-color:rgba(22,163,74,0.25);" onmouseover="this.style.borderColor='var(--accent3)'" onmouseout="this.style.borderColor='rgba(22,163,74,0.25)'">
+        <p class="edu-year" style="color:var(--accent3);">2012 — 2022</p>
+        <h3 class="edu-uni">Faizur Rahman Ideal Institute</h3>
+        <p class="edu-degree">Primary, Junior Secondary &amp; Secondary Education</p>
+        <p style="font-size:13px;color:var(--text-muted);margin-bottom:1.25rem;">Dhaka, Bangladesh</p>
+        <div style="display:flex;flex-wrap:wrap;gap:8px;">
+          <span class="edu-badge" style="background:var(--accent3-dim);border-color:rgba(22,163,74,0.2);color:var(--accent3);">PEC &middot; 2016</span>
+          <span class="edu-badge" style="background:var(--accent3-dim);border-color:rgba(22,163,74,0.2);color:var(--accent3);">JSC &middot; 2019</span>
+          <span class="edu-badge" style="background:var(--accent3-dim);border-color:rgba(22,163,74,0.2);color:var(--accent3);">SSC &middot; 2022</span>
+        </div>
       </div>
 
     </div>
