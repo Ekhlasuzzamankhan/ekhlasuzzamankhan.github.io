@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Esports — Ekhlasuzzaman Khan</title>
+  <link rel="stylesheet" href="../css/style.css"/>
+  <style>
+    .back-link{display:inline-flex;align-items:center;gap:8px;font-size:13px;color:var(--text-muted);text-decoration:none;margin-bottom:2.5rem;transition:color 0.2s;}
+    .back-link:hover{color:#7c3aed;}
+    .gif-banner{position:relative;width:100%;height:440px;overflow:hidden;}
+    .gif-banner img.bg-gif{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+    .gif-overlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;}
+    .gif-text-box{text-align:center;padding:2rem 3rem;max-width:640px;}
+    .gif-eyebrow{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:#7c3aed;margin-bottom:0.75rem;display:flex;align-items:center;justify-content:center;gap:10px;}
+    .gif-eyebrow::before,.gif-eyebrow::after{content:'';width:24px;height:2px;background:#7c3aed;border-radius:2px;}
+    .gif-title{font-family:'Fraunces',serif;font-size:clamp(2.4rem,6vw,4.5rem);font-weight:500;line-height:1.08;color:var(--text);margin-bottom:1rem;}
+    .gif-title em{font-style:italic;color:#7c3aed;}
+    .gif-tagline{font-size:15px;color:var(--text-muted);line-height:1.8;max-width:480px;margin:0 auto;}
+    .detail-body{max-width:860px;margin:0 auto;padding:4rem 3rem;}
+    .detail-section{margin-bottom:3rem;}
+    .detail-section-title{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:#7c3aed;margin-bottom:1.25rem;display:flex;align-items:center;gap:10px;}
+    .detail-section-title::after{content:'';flex:1;height:1px;background:var(--border);}
+    .detail-section p{font-size:15px;color:var(--text-muted);line-height:1.9;}
+    .detail-section p+p{margin-top:1rem;}
+    .platform-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:1.5rem;}
+    .platform-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:1.25rem;text-align:center;transition:transform 0.2s,box-shadow 0.2s,border-color 0.2s;}
+    .platform-card:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(124,58,237,0.1);border-color:rgba(124,58,237,0.3);}
+    .platform-card .icon{font-size:28px;margin-bottom:0.5rem;}
+    .platform-card h3{font-size:14px;font-weight:500;margin-bottom:4px;}
+    .platform-card p{font-size:12px;color:var(--text-muted);}
+    .tags-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:1.25rem;}
+    .tag{padding:6px 14px;border-radius:20px;font-size:12px;background:rgba(124,58,237,0.08);color:#7c3aed;border:1px solid rgba(124,58,237,0.2);}
+    @media(max-width:768px){.gif-banner{height:300px;}.gif-text-box{padding:1.5rem;}.detail-body{padding:3rem 1.5rem;}.platform-grid{grid-template-columns:1fr 1fr;}}
+  </style>
+</head>
+<body>
+<nav>
+  <a class="nav-logo" href="../index.html"><img src="../ek-logo.gif" alt="EK" style="height:34px;width:auto;vertical-align:middle;filter:brightness(0) saturate(100%) invert(42%) sepia(80%) saturate(600%) hue-rotate(350deg) brightness(95%);"></a>
+  <div class="nav-links" id="navLinks">
+    <a href="../index.html">Home</a><a href="about.html">About</a><a href="education.html">Education</a><a href="skills.html">Skills</a><a href="projects.html">Projects</a><a href="interests.html" class="active">Interests</a><a href="contact.html">Contact</a>
+  </div>
+  <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+</nav>
+<div class="page">
+  <div class="gif-banner">
+    <img class="bg-gif" src="esports.gif" alt="Esports"/>
+    <div class="gif-overlay">
+      <div class="gif-text-box">
+        <div class="gif-eyebrow">Interest</div>
+        <h1 class="gif-title">Esports &amp;<br><em>Gaming</em></h1>
+        <p class="gif-tagline">Competitive gaming is more than entertainment — it is a rapidly growing global industry blending technology, strategy, and human performance.</p>
+      </div>
+    </div>
+  </div>
+  <div class="detail-body">
+    <a href="interests.html" class="back-link">← Back to Interests</a>
+    <div class="detail-section fade-up">
+      <div class="detail-section-title">My perspective</div>
+      <p>I have been passionate about gaming across multiple platforms — PC, mobile, and consoles. What draws me to esports is not just the gameplay itself, but the remarkable ecosystem that has developed around it: professional leagues, international tournaments, dedicated fan communities, and a rapidly expanding industry worth billions globally.</p>
+      <p>As someone studying Electrical and Electronics Engineering, I also see esports through a technical lens — the hardware innovations, networking infrastructure, and software engineering that power competitive gaming are genuinely fascinating. I firmly believe esports has an extraordinary future, and its mainstream recognition is only just beginning.</p>
+    </div>
+    <div class="detail-section fade-up">
+      <div class="detail-section-title">Platforms I play on</div>
+      <div class="platform-grid">
+        <div class="platform-card"><div class="icon">💻</div><h3>PC &amp; Laptop</h3><p>Primary platform for competitive and strategy games</p></div>
+        <div class="platform-card"><div class="icon">📱</div><h3>Mobile</h3><p>Fast-paced mobile titles and casual competitive play</p></div>
+        <div class="platform-card"><div class="icon">🕹️</div><h3>Console</h3><p>Immersive and story-driven gaming experiences</p></div>
+      </div>
+      <div class="tags-row">
+        <span class="tag">Competitive Gaming</span><span class="tag">Strategy</span><span class="tag">Esports Tournaments</span><span class="tag">Multiplayer</span>
+      </div>
+    </div>
+  </div>
+</div>
+<footer><span>&copy; 2026 Ekhlasuzzaman Khan</span><span>Banasree, Dhaka, Bangladesh</span></footer>
+<script src="../js/nav.js"></script>
+</body>
+</html>

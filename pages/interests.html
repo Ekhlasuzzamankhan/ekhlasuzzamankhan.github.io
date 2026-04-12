@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Interests — Ekhlasuzzaman Khan</title>
+  <link rel="stylesheet" href="../css/style.css"/>
+  <style>
+    .interests-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.25rem;
+    }
+    .interest-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 2rem 1.75rem;
+      text-decoration: none;
+      color: var(--text);
+      display: block;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.25s, box-shadow 0.25s, border-color 0.25s;
+    }
+    .interest-card::before {
+      content: '';
+      position: absolute; bottom: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--card-color, var(--accent));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.3s ease;
+    }
+    .interest-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,0.08); border-color: var(--border-hover); }
+    .interest-card:hover::before { transform: scaleX(1); }
+    .interest-icon { font-size: 36px; margin-bottom: 1.25rem; display: block; }
+    .interest-title { font-family: 'Fraunces', serif; font-size: 20px; font-weight: 500; margin-bottom: 0.5rem; }
+    .interest-tagline { font-size: 13px; color: var(--text-muted); line-height: 1.6; margin-bottom: 1.25rem; }
+    .interest-arrow {
+      font-size: 13px; color: var(--text-dim);
+      display: flex; align-items: center; gap: 6px;
+      transition: color 0.2s, gap 0.2s;
+    }
+    .interest-card:hover .interest-arrow { color: var(--card-color, var(--accent)); gap: 10px; }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="../index.html">
+    <img src="../ek-logo.gif" alt="EK" style="height:34px;width:auto;vertical-align:middle;filter:brightness(0) saturate(100%) invert(42%) sepia(80%) saturate(600%) hue-rotate(350deg) brightness(95%);">
+  </a>
+  <div class="nav-links" id="navLinks">
+    <a href="../index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="education.html">Education</a>
+    <a href="skills.html">Skills</a>
+    <a href="projects.html">Projects</a>
+    <a href="interests.html" class="active">Interests</a>
+    <a href="contact.html">Contact</a>
+  </div>
+  <div class="hamburger" id="hamburger">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<div class="page">
+  <div class="section-wrap">
+    <p class="section-label fade-up">Interests</p>
+    <h2 class="section-title fade-up">What drives me<br><em style="font-style:italic;color:var(--accent)">beyond academics</em></h2>
+    <p class="fade-up" style="font-size:15px;color:var(--text-muted);max-width:560px;margin-bottom:3rem;line-height:1.8;">
+      Beyond engineering and coursework, these are the passions that shape my thinking, fuel my curiosity, and inspire the way I approach life and work.
+    </p>
+
+    <div class="interests-grid fade-up">
+
+      <a href="interest-sports.html" class="interest-card" style="--card-color: #e05c2a;">
+        <span class="interest-icon">🏏</span>
+        <div class="interest-title">Sports</div>
+        <p class="interest-tagline">Cricket, football, and the values of discipline, strategy, and teamwork they instil.</p>
+        <div class="interest-arrow">Explore <span>→</span></div>
+      </a>
+
+      <a href="interest-esports.html" class="interest-card" style="--card-color: #7c3aed;">
+        <span class="interest-icon">🎮</span>
+        <div class="interest-title">Esports &amp; Gaming</div>
+        <p class="interest-tagline">Competitive gaming across platforms — and a belief in the massive future of esports globally.</p>
+        <div class="interest-arrow">Explore <span>→</span></div>
+      </a>
+
+      <a href="interest-automobiles.html" class="interest-card" style="--card-color: #2563eb;">
+        <span class="interest-icon">🚗</span>
+        <div class="interest-title">Automobiles</div>
+        <p class="interest-tagline">A lifelong passion for cars — from classic sedans to the electric vehicles shaping tomorrow.</p>
+        <div class="interest-arrow">Explore <span>→</span></div>
+      </a>
+
+      <a href="interest-robotics.html" class="interest-card" style="--card-color: #16a34a;">
+        <span class="interest-icon">🤖</span>
+        <div class="interest-title">Robotics &amp; Autonomy</div>
+        <p class="interest-tagline">Fascinated by intelligent systems, automation, and the future of autonomous technology.</p>
+        <div class="interest-arrow">Explore <span>→</span></div>
+      </a>
+
+    </div>
+  </div>
+</div>
+
+<footer>
+  <span>&copy; 2026 Ekhlasuzzaman Khan</span>
+  <span>Banasree, Dhaka, Bangladesh</span>
+</footer>
+
+<script src="../js/nav.js"></script>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Robotics — Ekhlasuzzaman Khan</title>
+  <link rel="stylesheet" href="../css/style.css"/>
+  <style>
+    .back-link{display:inline-flex;align-items:center;gap:8px;font-size:13px;color:var(--text-muted);text-decoration:none;margin-bottom:2.5rem;transition:color 0.2s;}
+    .back-link:hover{color:#16a34a;}
+    .gif-banner{position:relative;width:100%;height:440px;overflow:hidden;}
+    .gif-banner img.bg-gif{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+    .gif-overlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;}
+    .gif-text-box{text-align:center;padding:2rem 3rem;max-width:640px;}
+    .gif-eyebrow{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:#16a34a;margin-bottom:0.75rem;display:flex;align-items:center;justify-content:center;gap:10px;}
+    .gif-eyebrow::before,.gif-eyebrow::after{content:'';width:24px;height:2px;background:#16a34a;border-radius:2px;}
+    .gif-title{font-family:'Fraunces',serif;font-size:clamp(2.4rem,6vw,4.5rem);font-weight:500;line-height:1.08;color:var(--text);margin-bottom:1rem;}
+    .gif-title em{font-style:italic;color:#16a34a;}
+    .gif-tagline{font-size:15px;color:var(--text-muted);line-height:1.8;max-width:480px;margin:0 auto;}
+    .detail-body{max-width:860px;margin:0 auto;padding:4rem 3rem;}
+    .detail-section{margin-bottom:3rem;}
+    .detail-section-title{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:#16a34a;margin-bottom:1.25rem;display:flex;align-items:center;gap:10px;}
+    .detail-section-title::after{content:'';flex:1;height:1px;background:var(--border);}
+    .detail-section p{font-size:15px;color:var(--text-muted);line-height:1.9;}
+    .detail-section p+p{margin-top:1rem;}
+    .area-cards{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;margin-top:1.5rem;}
+    .area-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:1.5rem;border-left:3px solid #16a34a;transition:transform 0.2s,box-shadow 0.2s;}
+    .area-card:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(22,163,74,0.08);}
+    .area-card h3{font-size:15px;font-weight:500;margin-bottom:0.5rem;}
+    .area-card p{font-size:13px;color:var(--text-muted);line-height:1.7;}
+    .tags-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:1.5rem;}
+    .tag{padding:6px 14px;border-radius:20px;font-size:12px;background:rgba(22,163,74,0.08);color:#16a34a;border:1px solid rgba(22,163,74,0.2);}
+    @media(max-width:768px){.gif-banner{height:300px;}.gif-text-box{padding:1.5rem;}.detail-body{padding:3rem 1.5rem;}.area-cards{grid-template-columns:1fr;}}
+  </style>
+</head>
+<body>
+<nav>
+  <a class="nav-logo" href="../index.html"><img src="../ek-logo.gif" alt="EK" style="height:34px;width:auto;vertical-align:middle;filter:brightness(0) saturate(100%) invert(42%) sepia(80%) saturate(600%) hue-rotate(350deg) brightness(95%);"></a>
+  <div class="nav-links" id="navLinks">
+    <a href="../index.html">Home</a><a href="about.html">About</a><a href="education.html">Education</a><a href="skills.html">Skills</a><a href="projects.html">Projects</a><a href="interests.html" class="active">Interests</a><a href="contact.html">Contact</a>
+  </div>
+  <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+</nav>
+<div class="page">
+  <div class="gif-banner">
+    <img class="bg-gif" src="robotics.gif" alt="Robotics"/>
+    <div class="gif-overlay">
+      <div class="gif-text-box">
+        <div class="gif-eyebrow">Interest</div>
+        <h1 class="gif-title">Robotics &amp;<br><em>Autonomy</em></h1>
+        <p class="gif-tagline">Intelligent machines, autonomous systems, and the engineering principles that sit at the exciting intersection of everything I study and aspire to build.</p>
+      </div>
+    </div>
+  </div>
+  <div class="detail-body">
+    <a href="interests.html" class="back-link">← Back to Interests</a>
+    <div class="detail-section fade-up">
+      <div class="detail-section-title">Why it fascinates me</div>
+      <p>Robotics and autonomous systems represent one of the most compelling frontiers in modern engineering. The idea of designing machines that can sense their environment, process information, and act intelligently without human intervention is both technically profound and deeply exciting. As an EEE student, I see robotics as the natural convergence of everything I am learning — electronics, control systems, signal processing, and embedded programming.</p>
+      <p>The autonomous industry — spanning self-driving vehicles, industrial automation, drones, and AI-powered systems — is growing at an unprecedented pace. I am fascinated by the engineering challenges involved and motivated by the potential impact these technologies will have on the world in the coming decades.</p>
+    </div>
+    <div class="detail-section fade-up">
+      <div class="detail-section-title">Areas of interest</div>
+      <div class="area-cards">
+        <div class="area-card"><h3>🦾 Industrial Robotics</h3><p>Automated systems that improve precision, efficiency, and safety in manufacturing environments.</p></div>
+        <div class="area-card"><h3>🚗 Autonomous Vehicles</h3><p>Self-driving technology combining sensors, AI, and control systems to navigate independently.</p></div>
+        <div class="area-card"><h3>🚁 Drone Technology</h3><p>Unmanned aerial systems with applications in logistics, surveillance, agriculture, and beyond.</p></div>
+        <div class="area-card"><h3>🧠 AI &amp; Control Systems</h3><p>The intelligence layer enabling machines to learn, adapt, and make decisions in real time.</p></div>
+      </div>
+      <div class="tags-row">
+        <span class="tag">Automation</span><span class="tag">Embedded Systems</span><span class="tag">Control Systems</span><span class="tag">AI</span><span class="tag">Sensors</span><span class="tag">IoT</span>
+      </div>
+    </div>
+  </div>
+</div>
+<footer><span>&copy; 2026 Ekhlasuzzaman Khan</span><span>Banasree, Dhaka, Bangladesh</span></footer>
+<script src="../js/nav.js"></script>
+</body>
+</html>
