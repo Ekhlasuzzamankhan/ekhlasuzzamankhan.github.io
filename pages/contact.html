@@ -4,24 +4,16 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Contact — Ekhlasuzzaman Khan</title>
+  <link rel="icon" href="../ek-logo.gif" type="image/gif"/>
   <link rel="stylesheet" href="../css/style.css"/>
 </head>
 <body>
-
 <nav>
   <a class="nav-logo" href="../index.html"><img src="../ek-logo.gif" alt="EK" style="height:34px;width:auto;vertical-align:middle;filter:brightness(0) saturate(100%) invert(42%) sepia(80%) saturate(600%) hue-rotate(350deg) brightness(95%);"></a>
   <div class="nav-links" id="navLinks">
-    <a href="../index.html">Home</a>
-    <a href="about.html">About</a>
-    <a href="education.html">Education</a>
-    <a href="skills.html">Skills</a>
-    <a href="projects.html">Projects</a>
-    <a href="interests.html">Interests</a>
-    <a href="contact.html">Contact</a>
+    <a href="../index.html">Home</a><a href="about.html">About</a><a href="education.html">Education</a><a href="skills.html">Skills</a><a href="projects.html">Projects</a><a href="interests.html">Interests</a><a href="contact.html">Contact</a>
   </div>
-  <div class="hamburger" id="hamburger">
-    <span></span><span></span><span></span>
-  </div>
+  <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
   <button class="dark-toggle" id="darkToggle">🌙 Dark</button>
 </nav>
 
@@ -30,73 +22,94 @@
     <p class="section-label fade-up">Contact</p>
     <h2 class="section-title fade-up">Let's<br><em style="font-style:italic;color:var(--accent)">connect</em></h2>
 
-    <div class="contact-layout fade-up">
+    <div class="contact-layout reveal">
       <div class="contact-intro">
         <p>I'm always open to conversations — whether it's about a project, a collaboration, an opportunity, or just a friendly hello.</p>
-        <p>Feel free to reach out through any of the channels below. I'll get back to you as soon as I can.</p>
+        <p>Feel free to reach out through any of the channels below or send me a direct message using the form.</p>
         <p style="margin-top:1.5rem;font-size:13px;color:var(--text-dim);">📍 Banasree, Dhaka, Bangladesh</p>
       </div>
 
       <div class="contact-links">
-
         <a href="mailto:ekhlasuzzamank@gmail.com" class="contact-link">
           <div class="contact-link-icon">✉️</div>
-          <div>
-            <div class="contact-link-label">Personal email</div>
-            <div class="contact-link-value">ekhlasuzzamank@gmail.com</div>
-          </div>
+          <div><div class="contact-link-label">Personal email</div><div class="contact-link-value">ekhlasuzzamank@gmail.com</div></div>
         </a>
-
         <a href="mailto:ekhlasuzzaman.khan.252@northsouth.edu" class="contact-link">
           <div class="contact-link-icon">🎓</div>
-          <div>
-            <div class="contact-link-label">University email</div>
-            <div class="contact-link-value">ekhlasuzzaman.khan.252@northsouth.edu</div>
-          </div>
+          <div><div class="contact-link-label">University email</div><div class="contact-link-value">ekhlasuzzaman.khan.252@northsouth.edu</div></div>
         </a>
-
         <a href="tel:+8801401004021" class="contact-link">
           <div class="contact-link-icon">📞</div>
-          <div>
-            <div class="contact-link-label">Phone</div>
-            <div class="contact-link-value">+880 1401 004021</div>
-          </div>
+          <div><div class="contact-link-label">Phone</div><div class="contact-link-value">+880 1401 004021</div></div>
         </a>
-
         <a href="https://www.linkedin.com/in/ekhlasuzzaman-khan-718494402" target="_blank" class="contact-link">
           <div class="contact-link-icon">💼</div>
-          <div>
-            <div class="contact-link-label">LinkedIn</div>
-            <div class="contact-link-value">ekhlasuzzaman-khan-718494402</div>
-          </div>
+          <div><div class="contact-link-label">LinkedIn</div><div class="contact-link-value">ekhlasuzzaman-khan-718494402</div></div>
         </a>
-
         <a href="https://www.instagram.com/ekhlas_z_khan" target="_blank" class="contact-link">
           <div class="contact-link-icon">📸</div>
-          <div>
-            <div class="contact-link-label">Instagram</div>
-            <div class="contact-link-value">@ekhlas_z_khan</div>
-          </div>
+          <div><div class="contact-link-label">Instagram</div><div class="contact-link-value">@ekhlas_z_khan</div></div>
         </a>
-
         <a href="https://www.facebook.com/share/1M2MAbr2gM/" target="_blank" class="contact-link">
           <div class="contact-link-icon">👤</div>
-          <div>
-            <div class="contact-link-label">Facebook</div>
-            <div class="contact-link-value">Facebook profile</div>
-          </div>
+          <div><div class="contact-link-label">Facebook</div><div class="contact-link-value">Facebook profile</div></div>
         </a>
-
       </div>
     </div>
+
+    <!-- Contact Form -->
+    <div class="contact-form reveal reveal-delay-1">
+      <h3>Send me a message</h3>
+      <form id="contactForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="name">Your name</label>
+            <input type="text" id="name" name="name" placeholder="e.g. John Doe" required/>
+          </div>
+          <div class="form-group">
+            <label for="email">Your email</label>
+            <input type="email" id="email" name="email" placeholder="e.g. john@email.com" required/>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="subject">Subject</label>
+          <input type="text" id="subject" name="subject" placeholder="What is this about?" required/>
+        </div>
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" placeholder="Write your message here..." required></textarea>
+        </div>
+        <button type="submit" class="btn-primary" style="width:100%;justify-content:center;">Send Message →</button>
+        <div class="form-success" id="formSuccess">
+          ✅ Message sent successfully! I'll get back to you soon.
+        </div>
+      </form>
+    </div>
+
   </div>
 </div>
 
-<footer>
-  <span>&copy; 2026 Ekhlasuzzaman Khan &middot; Banasree, Dhaka, Bangladesh</span>
-</footer>
+<footer><span>&copy; 2026 Ekhlasuzzaman Khan &middot; Banasree, Dhaka, Bangladesh</span></footer>
 
 <script src="../js/nav.js"></script>
+<script src="../js/scroll.js"></script>
+<script>
+  const form = document.getElementById('contactForm');
+  const success = document.getElementById('formSuccess');
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const data = new FormData(form);
+    const res = await fetch(form.action, {
+      method: 'POST', body: data,
+      headers: { 'Accept': 'application/json' }
+    });
+    if (res.ok) {
+      form.reset();
+      success.style.display = 'block';
+      setTimeout(() => success.style.display = 'none', 5000);
+    }
+  });
+</script>
 <script data-goatcounter="https://ekhlasuzzamankhan.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>
 </html>
