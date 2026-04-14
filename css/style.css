@@ -269,3 +269,54 @@ footer {
 .edu-card.orange::before { background: var(--accent); }
 .edu-card.green::before  { background: var(--accent3); }
 
+/* ── DARK MODE ── */
+body.dark {
+  --bg: #0e0e0c;
+  --bg2: #161614;
+  --bg3: #1e1e1b;
+  --surface: #242420;
+  --border: rgba(255,255,255,0.07);
+  --border-hover: rgba(255,255,255,0.18);
+  --text: #f0ede6;
+  --text-muted: #9a9892;
+  --text-dim: #5a5856;
+  --accent-dim: rgba(224,92,42,0.15);
+  --accent2-dim: rgba(37,99,235,0.15);
+  --accent3-dim: rgba(22,163,74,0.15);
+}
+
+/* Dark mode toggle button */
+.dark-toggle {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 5px 12px;
+  font-size: 13px;
+  cursor: pointer;
+  color: var(--text-muted);
+  transition: all 0.2s;
+  display: flex; align-items: center; gap: 6px;
+}
+.dark-toggle:hover { border-color: var(--border-hover); color: var(--text); }
+
+/* CV download button */
+.btn-cv {
+  padding: 11px 28px; border-radius: var(--radius);
+  background: var(--accent3); color: #fff;
+  font-size: 14px; font-weight: 500;
+  border: none; cursor: pointer; text-decoration: none;
+  transition: opacity 0.2s, transform 0.15s; display: inline-flex;
+  align-items: center; gap: 8px;
+}
+.btn-cv:hover { opacity: 0.87; transform: translateY(-1px); }
+
+/* Visitor counter */
+.visitor-counter {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 13px; color: var(--text-dim);
+}
+.visitor-counter .count {
+  font-family: 'Fraunces', serif;
+  font-size: 15px; color: var(--accent);
+  font-weight: 500;
+}
