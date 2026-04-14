@@ -320,3 +320,84 @@ body.dark {
   font-size: 15px; color: var(--accent);
   font-weight: 500;
 }
+
+/* ── SCROLL ANIMATIONS ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.35s; }
+
+/* ── SKILL PILLS ANIMATED ── */
+.skill-pill {
+  position: relative;
+  overflow: hidden;
+}
+.skill-pill::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: currentColor;
+  opacity: 0;
+  transition: opacity 0.2s;
+  border-radius: inherit;
+}
+.skill-pill.orange { transition: all 0.25s; }
+.skill-pill.blue   { transition: all 0.25s; }
+.skill-pill.green  { transition: all 0.25s; }
+.skill-pill.orange:hover { background: var(--accent-dim); border-color: var(--accent); color: var(--accent); transform: translateY(-2px) scale(1.04); box-shadow: 0 4px 14px rgba(224,92,42,0.15); }
+.skill-pill.blue:hover   { background: var(--accent2-dim); border-color: var(--accent2); color: var(--accent2); transform: translateY(-2px) scale(1.04); box-shadow: 0 4px 14px rgba(37,99,235,0.15); }
+.skill-pill.green:hover  { background: var(--accent3-dim); border-color: var(--accent3); color: var(--accent3); transform: translateY(-2px) scale(1.04); box-shadow: 0 4px 14px rgba(22,163,74,0.15); }
+
+/* ── CONTACT FORM ── */
+.contact-form {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  margin-top: 2.5rem;
+}
+.contact-form h3 {
+  font-family: 'Fraunces', serif;
+  font-size: 20px; font-weight: 500;
+  margin-bottom: 1.5rem; color: var(--text);
+}
+.form-group { margin-bottom: 1.25rem; }
+.form-group label {
+  display: block; font-size: 12px;
+  letter-spacing: 1px; text-transform: uppercase;
+  color: var(--text-dim); margin-bottom: 0.5rem;
+}
+.form-group input,
+.form-group textarea {
+  width: 100%; padding: 11px 14px;
+  border-radius: var(--radius); border: 1px solid var(--border);
+  background: var(--bg); color: var(--text);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 14px; transition: border-color 0.2s, box-shadow 0.2s;
+  outline: none; resize: vertical;
+}
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-dim);
+}
+.form-group textarea { min-height: 130px; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.form-success {
+  display: none; text-align: center;
+  padding: 1.5rem; background: var(--accent3-dim);
+  border: 1px solid rgba(22,163,74,0.2);
+  border-radius: var(--radius); color: var(--accent3);
+  font-size: 14px; margin-top: 1rem;
+}
+
+@media (max-width: 600px) {
+  .form-row { grid-template-columns: 1fr; }
+}
