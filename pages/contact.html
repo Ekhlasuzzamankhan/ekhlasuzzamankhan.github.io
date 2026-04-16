@@ -9,7 +9,7 @@
 </head>
 <body>
 <nav>
-  <a class="nav-logo" href="../index.html"><img src="../ek-logo.gif" alt="EK" style="height:34px;width:auto;vertical-align:middle;filter:brightness(0) saturate(100%) invert(42%) sepia(80%) saturate(600%) hue-rotate(350deg) brightness(95%);"></a>
+  <a class="nav-logo" href="../index.html"><img src="../ek-logo.gif" alt="EK" style="height:44px;width:auto;vertical-align:middle;filter:brightness(0) saturate(100%) invert(42%) sepia(80%) saturate(600%) hue-rotate(350deg) brightness(95%);"></a>
   <div class="nav-links" id="navLinks">
     <a href="../index.html">Home</a><a href="about.html">About</a><a href="education.html">Education</a><a href="skills.html">Skills</a><a href="projects.html">Projects</a><a href="interests.html">Interests</a><a href="contact.html">Contact</a>
   </div>
@@ -25,10 +25,9 @@
     <div class="contact-layout reveal">
       <div class="contact-intro">
         <p>I'm always open to conversations — whether it's about a project, a collaboration, an opportunity, or just a friendly hello.</p>
-        <p>Feel free to reach out through any of the channels below or send me a direct message using the form.</p>
+        <p>Feel free to reach out through any of the channels below. I'll get back to you as soon as I can.</p>
         <p style="margin-top:1.5rem;font-size:13px;color:var(--text-dim);">📍 Banasree, Dhaka, Bangladesh</p>
       </div>
-
       <div class="contact-links">
         <a href="mailto:ekhlasuzzamank@gmail.com" class="contact-link">
           <div class="contact-link-icon">✉️</div>
@@ -55,20 +54,6 @@
           <div><div class="contact-link-label">Facebook</div><div class="contact-link-value">Facebook profile</div></div>
         </a>
       </div>
-    </div>  </div>
-        <div class="form-group">
-          <label for="subject">Subject</label>
-          <input type="text" id="subject" name="subject" placeholder="What is this about?" required/>
-        </div>
-        <div class="form-group">
-          <label for="message">Message</label>
-          <textarea id="message" name="message" placeholder="Write your message here..." required></textarea>
-        </div>
-        <button type="submit" class="btn-primary" style="width:100%;justify-content:center;">Send Message →</button>
-        <div class="form-success" id="formSuccess">
-          ✅ Message sent successfully! I'll get back to you soon.
-        </div>
-      </form>
     </div>
 
   </div>
@@ -78,23 +63,6 @@
 
 <script src="../js/nav.js"></script>
 <script src="../js/scroll.js"></script>
-<script>
-  const form = document.getElementById('contactForm');
-  const success = document.getElementById('formSuccess');
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const data = new FormData(form);
-    const res = await fetch(form.action, {
-      method: 'POST', body: data,
-      headers: { 'Accept': 'application/json' }
-    });
-    if (res.ok) {
-      form.reset();
-      success.style.display = 'block';
-      setTimeout(() => success.style.display = 'none', 5000);
-    }
-  });
-</script>
 <script data-goatcounter="https://ekhlasuzzamankhan.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </body>
 </html>
