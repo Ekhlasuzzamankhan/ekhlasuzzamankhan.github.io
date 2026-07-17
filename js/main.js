@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 document.addEventListener('DOMContentLoaded', () => {
 
-  // 1. CUSTOM CURSOR
+  // 1. CUSTOM CURSOR — FIXED
   const cursor = document.createElement('div');
   cursor.id = 'ez-cursor';
   document.body.appendChild(cursor);
@@ -69,7 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const d = document.createElement('div');
     d.className = 'ez-trail';
     const s = (10 - i) + 'px';
-    d.style.cssText = `width:${s};height:${s};opacity:${(1 - i / NUM_TRAILS) * 0.65};`;
+    d.style.cssText = `width:${s};height:${s};opacity:${(1 - i / NUM_TRAILS) * 0.65};position:fixed;left:0;top:0;border-radius:50%;pointer-events:none;z-index:99998;background:rgba(224,92,42,0.4);will-change:transform;`;
     document.body.appendChild(d);
     return d;
   });
@@ -79,9 +79,12 @@ document.addEventListener('DOMContentLoaded', () => {
   document.addEventListener('mousedown', () => cursor.classList.add('clicking'));
   document.addEventListener('mouseup', () => cursor.classList.remove('clicking'));
   function animCursor() {
-    cursor.style.transform = `translate(${mouse.x}px,${mouse.y}px)`;
+    cursor.style.transform = `translate(${mouse.x - 15}px,${mouse.y - 15}px)`;
     trailPos = [{ ...mouse }, ...trailPos.slice(0, NUM_TRAILS - 1)];
-    trailEls.forEach((el, i) => { el.style.transform = `translate(${trailPos[i].x}px,${trailPos[i].y}px)`; });
+    trailEls.forEach((el, i) => {
+      const size = parseInt(el.style.width) / 2;
+      el.style.transform = `translate(${trailPos[i].x - size}px,${trailPos[i].y - size}px)`;
+    });
     requestAnimationFrame(animCursor);
   }
   animCursor();
@@ -111,8 +114,10 @@ document.addEventListener('DOMContentLoaded', () => {
   const pad = v => String(v).padStart(2,'0');
   function tickClock() {
     const n = new Date();
-    document.getElementById('ez-ct').textContent = `${pad(n.getHours())}:${pad(n.getMinutes())}:${pad(n.getSeconds())}`;
-    document.getElementById('ez-cd').textContent = `${DAYS[n.getDay()]} ${pad(n.getDate())} ${MONTHS[n.getMonth()]}`;
+    const ct = document.getElementById('ez-ct');
+    const cd = document.getElementById('ez-cd');
+    if(ct) ct.textContent = `${pad(n.getHours())}:${pad(n.getMinutes())}:${pad(n.getSeconds())}`;
+    if(cd) cd.textContent = `${DAYS[n.getDay()]} ${pad(n.getDate())} ${MONTHS[n.getMonth()]}`;
   }
   tickClock(); setInterval(tickClock, 1000);
 
@@ -126,67 +131,7 @@ document.addEventListener('DOMContentLoaded', () => {
     hero.style.position = 'relative';
   }
 
-  // 5 & 6. SINE WAVE SKILL BARS
-  const skillsSection = document.querySelector('.skills-categories');
-  if (skillsSection) {
-    const skills = [
-      { name: 'C Programming',     color: '#e05c2a', oscillate: false },
-      { name: 'AutoCAD',           color: '#2563eb', oscillate: false },
-      { name: 'Multisim',          color: '#2563eb', oscillate: false },
-      { name: 'Circuit Building',  color: '#2563eb', oscillate: false },
-      { name: 'Project Designing', color: '#2563eb', oscillate: false },
-      { name: 'Canva',             color: '#16a34a', oscillate: false },
-      { name: 'Illustration',      color: '#16a34a', oscillate: false },
-      { name: 'Problem Solving',   color: '#7c3aed', oscillate: true  },
-    ];
-    const waveSection = document.createElement('div');
-    waveSection.style.marginTop = '3rem';
-    waveSection.innerHTML = `<p style="font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--accent);margin-bottom:2rem;display:flex;align-items:center;gap:12px;">Skill Waves<span style="flex:1;height:1px;background:var(--border);display:block;"></span></p>`;
-    const canvases = [];
-    skills.forEach(skill => {
-      const id = skill.name.replace(/\s/g,'-');
-      const item = document.createElement('div');
-      item.className = 'skill-wave-item';
-      item.innerHTML = `<div class="skill-wave-header"><span class="skill-wave-label">${skill.name}</span><span class="skill-wave-pct" id="pct-${id}">100%</span></div><canvas class="skill-wave-canvas" id="wave-${id}" height="52"></canvas>`;
-      waveSection.appendChild(item);
-      canvases.push({ canvas: item.querySelector('canvas'), skill, id });
-    });
-    skillsSection.appendChild(waveSection);
-    let t = 0;
-    function drawWaves() {
-      t += 0.035;
-      canvases.forEach(({ canvas, skill, id }) => {
-        canvas.width = canvas.offsetWidth || 800;
-        const ctx = canvas.getContext('2d');
-        const W = canvas.width, H = canvas.height;
-        ctx.clearRect(0, 0, W, H);
-        const pct = skill.oscillate ? 50 + 50 * Math.sin(t * 0.6) : 100;
-        const pctEl = document.getElementById(`pct-${id}`);
-        if (pctEl) pctEl.textContent = Math.round(pct) + '%';
-        const amp = (pct / 100) * (H / 2 - 5);
-        const mid = H / 2;
-        const grad = ctx.createLinearGradient(0, 0, 0, H);
-        grad.addColorStop(0, skill.color + '50');
-        grad.addColorStop(1, skill.color + '08');
-        ctx.fillStyle = grad;
-        ctx.beginPath();
-        ctx.moveTo(0, mid);
-        for (let x = 0; x <= W; x++) { ctx.lineTo(x, mid - amp * Math.sin((x / W) * 4 * Math.PI + t * 2)); }
-        ctx.lineTo(W, H); ctx.lineTo(0, H); ctx.closePath(); ctx.fill();
-        ctx.strokeStyle = skill.color; ctx.lineWidth = 2;
-        ctx.shadowColor = skill.color; ctx.shadowBlur = 7;
-        ctx.beginPath();
-        for (let x = 0; x <= W; x++) { const y = mid - amp * Math.sin((x / W) * 4 * Math.PI + t * 2); x === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y); }
-        ctx.stroke(); ctx.shadowBlur = 0;
-        ctx.strokeStyle = skill.color + '25'; ctx.lineWidth = 1;
-        ctx.setLineDash([4,4]); ctx.beginPath(); ctx.moveTo(0,mid); ctx.lineTo(W,mid); ctx.stroke(); ctx.setLineDash([]);
-      });
-      requestAnimationFrame(drawWaves);
-    }
-    drawWaves();
-  }
-
-  // 7. KONAMI EASTER EGG
+  // 5. KONAMI EASTER EGG
   const CODE = ['ArrowUp','ArrowUp','ArrowDown','ArrowDown','ArrowLeft','ArrowRight','ArrowLeft','ArrowRight','b','a'];
   let ki = 0;
   document.addEventListener('keydown', e => {
