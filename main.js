@@ -85,7 +85,7 @@ document.addEventListener('DOMContentLoaded', () => {
   document.addEventListener('mouseup', () => { isClicking = false; cursor.classList.remove('clicking'); });
 
   function animCursor() {
-    cursor.style.transform = 'translate(' + mouse.x + 'px,' + mouse.y + 'px)';
+    cursor.style.transform = 'translate(' + mouse.x + 'px,' + mouse.y + 'px) rotate(-45deg)';
     sparkPos = [{ x: mouse.x, y: mouse.y }, ...sparkPos.slice(0, NUM_SPARKS - 1)];
     sparks.forEach(function(s, i) {
       var half = parseFloat(s.style.width) / 2;
