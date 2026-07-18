@@ -404,42 +404,44 @@ body.dark {
 }
 
 /* ═══════════════════════════════════════
-   CUSTOM CURSOR — FIXED
+   SPARK ARROW CURSOR
 ═══════════════════════════════════════ */
 * { cursor: none !important; }
+
 #ez-cursor {
   position: fixed; left: 0; top: 0;
-  width: 32px; height: 32px;
+  width: 0; height: 0;
   pointer-events: none; z-index: 99999;
   will-change: transform;
+  border-left: 9px solid transparent;
+  border-right: 9px solid transparent;
+  border-bottom: 20px solid #e05c2a;
+  filter: drop-shadow(0 0 4px rgba(224,92,42,0.6));
+  animation: arrowGlow 1s ease-in-out infinite alternate;
 }
-#ez-cursor::before {
-  content: '';
-  position: absolute; top: 0; left: 50%;
-  transform: translateX(-50%) rotate(-45deg);
-  transform-origin: bottom;
-  width: 7px; height: 24px;
-  background: linear-gradient(to bottom, #999 0%, #555 50%, #e05c2a 100%);
-  border-radius: 3px 3px 2px 2px;
+#ez-cursor.clicking {
+  border-bottom-color: #ff9a5c;
+  filter: drop-shadow(0 0 10px rgba(255,154,92,1));
 }
-#ez-cursor::after {
-  content: '';
-  position: absolute; bottom: 0; left: 50%;
-  transform: translateX(-50%);
-  width: 9px; height: 9px;
-  background: #e05c2a; border-radius: 50%;
-  box-shadow: 0 0 8px 3px rgba(224,92,42,0.7), 0 0 18px 6px rgba(224,92,42,0.3);
-  animation: tipGlow 1s ease-in-out infinite alternate;
+@keyframes arrowGlow {
+  from { filter: drop-shadow(0 0 3px rgba(224,92,42,0.5)); }
+  to   { filter: drop-shadow(0 0 8px rgba(224,92,42,0.9)) drop-shadow(0 0 14px rgba(255,154,92,0.4)); }
 }
-#ez-cursor.clicking::after {
-  box-shadow: 0 0 16px 6px rgba(224,92,42,1), 0 0 30px 12px rgba(224,92,42,0.5);
-  background: #ff9a5c;
+
+/* Spark trail */
+.ez-spark {
+  transition: background 0.1s;
+  box-shadow: 0 0 4px 1px rgba(255,154,92,0.6);
 }
-@keyframes tipGlow {
-  from { box-shadow: 0 0 6px 2px rgba(224,92,42,0.5); }
-  to   { box-shadow: 0 0 14px 6px rgba(224,92,42,0.9), 0 0 24px 10px rgba(224,92,42,0.3); }
+#ez-cursor.clicking + .ez-spark,
+body.clicking .ez-spark {
+  box-shadow: 0 0 6px 2px rgba(224,92,42,0.9);
 }
-@media (hover: none) { #ez-cursor, .ez-trail { display: none !important; } * { cursor: auto !important; } }
+
+@media (hover: none) {
+  #ez-cursor, .ez-spark { display: none !important; }
+  * { cursor: auto !important; }
+}
 
 /* INTRO */
 #ez-intro { position:fixed; inset:0; z-index:99990; display:flex; align-items:center; justify-content:center; background:#fafaf8; overflow:hidden; }

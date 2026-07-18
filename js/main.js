@@ -60,30 +60,37 @@ document.addEventListener('DOMContentLoaded', () => {
 
 document.addEventListener('DOMContentLoaded', () => {
 
-  // 1. CUSTOM CURSOR — FIXED
+  // 1. SPARK ARROW CURSOR
   const cursor = document.createElement('div');
   cursor.id = 'ez-cursor';
   document.body.appendChild(cursor);
-  const NUM_TRAILS = 10;
-  const trailEls = Array.from({ length: NUM_TRAILS }, (_, i) => {
-    const d = document.createElement('div');
-    d.className = 'ez-trail';
-    const s = (10 - i) + 'px';
-    d.style.cssText = `width:${s};height:${s};opacity:${(1 - i / NUM_TRAILS) * 0.65};position:fixed;left:0;top:0;border-radius:50%;pointer-events:none;z-index:99998;background:rgba(224,92,42,0.4);will-change:transform;`;
-    document.body.appendChild(d);
-    return d;
+
+  const NUM_SPARKS = 7;
+  const sparks = Array.from({ length: NUM_SPARKS }, (_, i) => {
+    const s = document.createElement('div');
+    s.className = 'ez-spark';
+    const size = (7 - i) + 'px';
+    s.style.cssText = 'position:fixed;left:0;top:0;width:' + size + ';height:' + size + ';border-radius:50%;pointer-events:none;z-index:99997;will-change:transform;background:#ff9a5c;';
+    s.style.opacity = (1 - i / NUM_SPARKS) * 0.85;
+    document.body.appendChild(s);
+    return s;
   });
+
   let mouse = { x: -200, y: -200 };
-  let trailPos = Array(NUM_TRAILS).fill().map(() => ({ x: -200, y: -200 }));
+  let sparkPos = Array(NUM_SPARKS).fill().map(() => ({ x: -200, y: -200 }));
+  let isClicking = false;
+
   document.addEventListener('mousemove', e => { mouse.x = e.clientX; mouse.y = e.clientY; });
-  document.addEventListener('mousedown', () => cursor.classList.add('clicking'));
-  document.addEventListener('mouseup', () => cursor.classList.remove('clicking'));
+  document.addEventListener('mousedown', () => { isClicking = true; cursor.classList.add('clicking'); });
+  document.addEventListener('mouseup', () => { isClicking = false; cursor.classList.remove('clicking'); });
+
   function animCursor() {
-    cursor.style.transform = `translate(${mouse.x - 15}px,${mouse.y - 15}px)`;
-    trailPos = [{ ...mouse }, ...trailPos.slice(0, NUM_TRAILS - 1)];
-    trailEls.forEach((el, i) => {
-      const size = parseInt(el.style.width) / 2;
-      el.style.transform = `translate(${trailPos[i].x - size}px,${trailPos[i].y - size}px)`;
+    cursor.style.transform = 'translate(' + mouse.x + 'px,' + mouse.y + 'px)';
+    sparkPos = [{ x: mouse.x, y: mouse.y }, ...sparkPos.slice(0, NUM_SPARKS - 1)];
+    sparks.forEach(function(s, i) {
+      var half = parseFloat(s.style.width) / 2;
+      s.style.transform = 'translate(' + (sparkPos[i].x - half) + 'px,' + (sparkPos[i].y - half) + 'px)';
+      s.style.background = isClicking ? '#e05c2a' : '#ff9a5c';
     });
     requestAnimationFrame(animCursor);
   }
