@@ -161,3 +161,133 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
 });
+
+// ═══════════════════════════════════════════
+// FEATURE: SCROLL PROGRESS BAR
+// ═══════════════════════════════════════════
+(function() {
+  const bar = document.createElement('div');
+  bar.id = 'scroll-bar';
+  bar.style.cssText = 'position:fixed;top:0;left:0;height:3px;width:0%;background:linear-gradient(90deg,#e05c2a,#ff9a5c);z-index:99999;transition:width 0.1s;border-radius:0 2px 2px 0;box-shadow:0 0 8px rgba(224,92,42,0.6);';
+  document.body.appendChild(bar);
+  window.addEventListener('scroll', () => {
+    const total = document.documentElement.scrollHeight - window.innerHeight;
+    const pct = total > 0 ? (window.scrollY / total) * 100 : 0;
+    bar.style.width = pct + '%';
+  });
+})();
+
+// ═══════════════════════════════════════════
+// FEATURE: PARTICLE BACKGROUND
+// ═══════════════════════════════════════════
+(function() {
+  const hero = document.querySelector('.hero');
+  if (!hero) return;
+
+  const canvas = document.createElement('canvas');
+  canvas.id = 'particle-canvas';
+  canvas.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0;opacity:0.5;';
+  hero.style.position = 'relative';
+  hero.prepend(canvas);
+
+  const ctx = canvas.getContext('2d');
+  const PARTICLE_COUNT = 55;
+  let particles = [];
+  let W, H;
+
+  function resize() {
+    W = canvas.width = hero.offsetWidth;
+    H = canvas.height = hero.offsetHeight;
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  for (let i = 0; i < PARTICLE_COUNT; i++) {
+    particles.push({
+      x: Math.random() * W,
+      y: Math.random() * H,
+      r: Math.random() * 2 + 0.5,
+      vx: (Math.random() - 0.5) * 0.4,
+      vy: (Math.random() - 0.5) * 0.4,
+      opacity: Math.random() * 0.5 + 0.2
+    });
+  }
+
+  function drawParticles() {
+    ctx.clearRect(0, 0, W, H);
+    particles.forEach((p, i) => {
+      p.x += p.vx; p.y += p.vy;
+      if (p.x < 0) p.x = W; if (p.x > W) p.x = 0;
+      if (p.y < 0) p.y = H; if (p.y > H) p.y = 0;
+
+      // Draw particle
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(224,92,42,${p.opacity})`;
+      ctx.fill();
+
+      // Connect nearby particles
+      particles.slice(i + 1).forEach(q => {
+        const dx = p.x - q.x, dy = p.y - q.y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < 120) {
+          ctx.beginPath();
+          ctx.moveTo(p.x, p.y);
+          ctx.lineTo(q.x, q.y);
+          ctx.strokeStyle = `rgba(224,92,42,${0.12 * (1 - dist / 120)})`;
+          ctx.lineWidth = 0.8;
+          ctx.stroke();
+        }
+      });
+    });
+    requestAnimationFrame(drawParticles);
+  }
+  drawParticles();
+})();
+
+// ═══════════════════════════════════════════
+// FEATURE: WAVE HERO TEXT ANIMATION
+// ═══════════════════════════════════════════
+(function() {
+  const title = document.querySelector('.hero h1');
+  if (!title) return;
+
+  // Split each text node into spans
+  title.childNodes.forEach(node => {
+    if (node.nodeType === 3) { // text node
+      const chars = node.textContent.split('');
+      const frag = document.createDocumentFragment();
+      chars.forEach((ch, i) => {
+        const span = document.createElement('span');
+        span.textContent = ch;
+        span.style.cssText = `display:inline-block;opacity:0;transform:translateY(20px);animation:waveIn 0.5s ease forwards;animation-delay:${i * 0.04}s;`;
+        frag.appendChild(span);
+      });
+      node.parentNode.replaceChild(frag, node);
+    }
+  });
+})();
+
+// ═══════════════════════════════════════════
+// FEATURE: FADE PAGE TRANSITIONS
+// ═══════════════════════════════════════════
+(function() {
+  // Fade in on load
+  document.body.style.opacity = '0';
+  document.body.style.transition = 'opacity 0.4s ease';
+  window.addEventListener('load', () => {
+    document.body.style.opacity = '1';
+  });
+
+  // Fade out on nav link click
+  document.querySelectorAll('a').forEach(a => {
+    const href = a.getAttribute('href');
+    if (!href || href.startsWith('#') || href.startsWith('mailto') || href.startsWith('tel') || href.startsWith('http') || a.hasAttribute('download')) return;
+    a.addEventListener('click', e => {
+      e.preventDefault();
+      document.body.style.opacity = '0';
+      setTimeout(() => { window.location.href = href; }, 380);
+    });
+  });
+})();
+
