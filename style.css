@@ -563,28 +563,36 @@ body {
 .ct-card h3 { font-size: 16px; font-weight: 500; margin-bottom: 0.5rem; }
 .ct-card p { font-size: 13px; color: var(--text-muted); line-height: 1.7; }
 
-/* Certification cards */
+/* Certification cards (with real certificate photos) */
 .cert-grid {
-  display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 1rem; margin-top: 1.5rem;
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.25rem; margin-top: 0.5rem;
 }
 .cert-card {
   background: var(--surface); border: 1px solid var(--border);
-  border-radius: var(--radius-lg); padding: 1.5rem;
-  position: relative; overflow: hidden;
+  border-radius: var(--radius-lg); padding: 0;
+  position: relative; overflow: hidden; display: block;
+  text-decoration: none; color: var(--text);
   transition: border-color 0.25s, transform 0.2s, box-shadow 0.2s;
 }
 .cert-card:not(.placeholder-card):hover {
   border-color: var(--accent); transform: translateY(-3px);
-  box-shadow: 0 8px 24px rgba(224,92,42,0.1);
+  box-shadow: 0 10px 28px rgba(224,92,42,0.14);
 }
-.cert-ribbon { font-size: 22px; margin-bottom: 0.9rem; }
+.cert-thumb {
+  width: 100%; aspect-ratio: 4 / 3; object-fit: cover;
+  display: block; background: var(--bg2);
+  border-bottom: 1px solid var(--border);
+}
+.cert-body { padding: 1.25rem 1.5rem 1.5rem; }
 .cert-issuer {
   display: block; font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase;
   color: var(--text-dim); margin-bottom: 0.5rem;
 }
-.cert-card h3 { font-size: 14.5px; font-weight: 500; line-height: 1.5; margin-bottom: 0.75rem; }
-.cert-year { font-size: 12px; color: var(--text-muted); }
+.cert-card h3 { font-size: 14.5px; font-weight: 500; line-height: 1.5; margin-bottom: 0.5rem; }
+.cert-note { font-size: 12.5px; color: var(--text-muted); line-height: 1.6; margin-bottom: 0.75rem; }
+.cert-year { font-size: 12px; color: var(--accent); font-weight: 500; }
+.cert-card.placeholder-card { display: flex; align-items: center; justify-content: center; min-height: 180px; }
 
 @media (max-width: 600px) {
   .circuit-timeline { padding-left: 32px; }
