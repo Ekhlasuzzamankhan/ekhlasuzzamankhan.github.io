@@ -494,3 +494,107 @@ body.dark .circuit-bg { opacity:0.12; }
 .ez-oc-hint { font-size:11px; color:#333; letter-spacing:1px; }
 body.overclocked { animation:ocFlicker 0.08s infinite; }
 @keyframes ocFlicker { 0%,100%{filter:none;} 50%{filter:brightness(1.04) hue-rotate(3deg);} }
+
+/* ═══════════════════════════════════════
+   WAVE TEXT ANIMATION
+═══════════════════════════════════════ */
+@keyframes waveIn {
+  0%   { opacity: 0; transform: translateY(20px) rotate(3deg); }
+  60%  { opacity: 1; transform: translateY(-4px) rotate(-1deg); }
+  100% { opacity: 1; transform: translateY(0) rotate(0deg); }
+}
+
+/* ═══════════════════════════════════════
+   PAGE FADE TRANSITION
+═══════════════════════════════════════ */
+body {
+  opacity: 1;
+  transition: opacity 0.4s ease;
+}
+
+/* ═══════════════════════════════════════
+   CIRCUIT-TRACE TIMELINE (Journey page)
+═══════════════════════════════════════ */
+.circuit-timeline {
+  position: relative;
+  padding-left: 44px;
+}
+.circuit-timeline-trace {
+  position: absolute;
+  left: 0; top: 6px; bottom: 6px;
+  width: 40px; height: calc(100% - 12px);
+}
+.circuit-timeline-trace path {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 2;
+  stroke-dasharray: 6 5;
+  opacity: 0.35;
+}
+.ct-node {
+  position: relative;
+  margin-bottom: 2.5rem;
+}
+.ct-node:last-child { margin-bottom: 0; }
+.ct-dot {
+  position: absolute;
+  left: -44px; top: 1.6rem;
+  width: 11px; height: 11px;
+  border-radius: 50%;
+  background: var(--bg);
+  border: 2px solid var(--accent);
+  box-shadow: 0 0 0 4px var(--bg);
+}
+.ct-dot-now {
+  background: var(--accent);
+  animation: dotGlow 1s ease-in-out infinite alternate;
+}
+.ct-card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius-lg); padding: 1.5rem 1.75rem;
+  transition: border-color 0.25s, transform 0.2s, box-shadow 0.2s;
+}
+.ct-card:hover { border-color: var(--accent); transform: translateX(3px); }
+.ct-card-now { border-color: var(--accent); border-style: dashed; }
+.ct-date {
+  font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
+  color: var(--accent); display: block; margin-bottom: 0.5rem;
+}
+.ct-card h3 { font-size: 16px; font-weight: 500; margin-bottom: 0.5rem; }
+.ct-card p { font-size: 13px; color: var(--text-muted); line-height: 1.7; }
+
+/* Certification cards (with real certificate photos) */
+.cert-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.25rem; margin-top: 0.5rem;
+}
+.cert-card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius-lg); padding: 0;
+  position: relative; overflow: hidden; display: block;
+  text-decoration: none; color: var(--text);
+  transition: border-color 0.25s, transform 0.2s, box-shadow 0.2s;
+}
+.cert-card:not(.placeholder-card):hover {
+  border-color: var(--accent); transform: translateY(-3px);
+  box-shadow: 0 10px 28px rgba(224,92,42,0.14);
+}
+.cert-thumb {
+  width: 100%; aspect-ratio: 4 / 3; object-fit: cover;
+  display: block; background: var(--bg2);
+  border-bottom: 1px solid var(--border);
+}
+.cert-body { padding: 1.25rem 1.5rem 1.5rem; }
+.cert-issuer {
+  display: block; font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase;
+  color: var(--text-dim); margin-bottom: 0.5rem;
+}
+.cert-card h3 { font-size: 14.5px; font-weight: 500; line-height: 1.5; margin-bottom: 0.5rem; }
+.cert-note { font-size: 12.5px; color: var(--text-muted); line-height: 1.6; margin-bottom: 0.75rem; }
+.cert-year { font-size: 12px; color: var(--accent); font-weight: 500; }
+.cert-card.placeholder-card { display: flex; align-items: center; justify-content: center; min-height: 180px; }
+
+@media (max-width: 600px) {
+  .circuit-timeline { padding-left: 32px; }
+  .ct-dot { left: -32px; }
+}
